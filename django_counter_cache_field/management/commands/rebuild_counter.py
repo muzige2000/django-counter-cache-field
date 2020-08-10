@@ -3,7 +3,7 @@ import sys
 from django.core.management.base import BaseCommand
 from django.db.models import Count
 
-from django_counter_field.counter import counters
+from django_counter_cache_field.counter import counters
 
 
 class Command(BaseCommand):
@@ -30,6 +30,6 @@ class Command(BaseCommand):
             if total > 1000 and i % 1000 == 0:
                 sys.stdout.write('%s of %s\n' % (i, total))
             parent_id = parent.id
-            count = counter.child_model.objects.filter(**{ parent_field:parent_id}).count()
+            count = counter.child_model.objects.filter(**{parent_field: parent_id}).count()
             counter.set_counter_field(parent_id, count)
         sys.stdout.write('Completed!\n')

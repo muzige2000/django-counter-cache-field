@@ -41,6 +41,7 @@ def runtests(*test_args, **kwargs):
     failures = test_runner.run_tests(test_args)
     sys.exit(failures)
 
+
 if __name__ == '__main__':
     parser = OptionParser()
     parser.add_option('--failfast', action='store_true', default=False, dest='failfast')

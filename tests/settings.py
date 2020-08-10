@@ -4,8 +4,10 @@ DATABASES = {
     }
 }
 
+SECRET_KEY = 1
 
-INSTALLED_APPS=[
+INSTALLED_APPS = [
+    'django_counter_cache_field',
     'tests',
 ]
 

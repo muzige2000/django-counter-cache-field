@@ -1,0 +1,20 @@
+language: python
+python:
+  - "3.6"
+  - "3.7"
+  - "3.8"
+  - "nightly"  # nightly build
+install:
+  - pip install -e .[test]
+# command to run tests
+script:
+  - ./manage.py test
+
+deploy:
+  provider: pypi
+  username: __token__
+  password:
+    secure: Fv+Cxy4qz5/vyQ5UGyMwBwsMLfx2H8x3/2ptPC2W3p/qfw2y+FSdybLzYhl2UV//VHSyWRIdCWbuNsC0SitWyu2ZLrVbexVXejzGK2DTLi7KhWK+nKS4fEFwwpi+e1vE5TW4OutBTqlKcoyJ599QH3ipZ/jvCb3fnouUJCIUqj1Zt8ozTLjYFFIHDdYe6ic574iVl5heKLgdudFWc7dprOqgz9s9H5GbTur++w7hOrxysbopRiKinEjAhuWxnE+8/UiiWm/QOhYUgQyZupwT7ZSls7x1o8iDIkEnzb4S+duCzZ9mG+/AhD5nR1rCQ7VzRnZGwsxaAbwWJN5yhqBooYVY8PgQdxFG81fJoZ9C/dowDmbFANG+FiRMSsg31MTLbh7pFV+xbC5w1cChFSU28dIgR7Fw3+D5JJBHSDAI9gyJvzgbOqNErV3ANmwCisgDeASfga1993N2ryVbg66Y5MkGz/903dZzn4EcVnvuWZftuTdhuc4dTX8vKor2JcaVO+Jc+UpuwFRNgCSbzjdnCBGw0AizcTt//HpOjZu+yPeqTiLYuqlzfrswYHRjMsQCCsIb+ta7Wd87XjoEnk7JEwdtFaxP0uVWP4RLqXz6AVN3QqD+p0Jx2y3lrS611LDb6ZFvPw6NO5LSqNkoPWWr8tPd0WQhFBSqDjw6S7PytiA=
+  on:
+    tags: true
+  skip_existing: true

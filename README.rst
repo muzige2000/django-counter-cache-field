@@ -12,32 +12,24 @@ Quick start
 
 1. Install django-counter-field::
 
-    pip install django-counter-field
+    pip install django-counter-cache-field
 
 2. Add "django_counter_field" to your INSTALLED_APPS setting::
 
     INSTALLED_APPS = (
         ...
-        'django_counter_field',
+        'django_counter_cache_field',
     )
 
-3. Add a CounterField to your model::
+3. Add a CounterCacheField to your model::
 
-    from django_counter_field import CounterField
+    from django_counter_field import CounterCacheField
 
 
     class Article(models.Model):
-        comment_count = CounterField()
+        comment_count = CounterCacheField()
 
-4. Add the CounterMixin to the related model::
-
-    from django_counter_field import CounterMixin, connect_counter
-
-
-    class Comment(CounterMixin, models.Model):
-        article = models.ForeignKey(Article)
-
-5. Connect the related foreign key field with the counter field::
+4. Connect the related foreign key field with the counter field in your signals::
 
     connect_counter('comment_count', Comment.article)
 
@@ -50,7 +42,7 @@ Overview
 
 Creating a new counter requires three simple steps:
 
-1. Add a `CounterField` field to the parent model.
+1. Add a `CounterCacheField` field to the parent model.
 2. Add the `CounterMixin` mixin to the child model.
 3. Use `connect_counter` to connect the child model with the new counter.
 
@@ -68,7 +60,7 @@ does that by default.
 Backfilling
 -----------
 
-Often you will add a `CounterField` to a model that already has a large number of associated objects. When a counter
+Often you will add a `CounterCacheField` to a model that already has a large number of associated objects. When a counter
 is created, it's value is initialized to zero. This value is likely incorrect. django-counter-field provides a couple
 of management commands that allow you to rebuild the value of a counter:
 

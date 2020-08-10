@@ -1,9 +1,9 @@
-from django.test import TestCase
+from django.test import TransactionTestCase
 
 from .models import User, Relationship, Article
 
 
-class RelationshipsTestCase(TestCase):
+class RelationshipsTestCase(TransactionTestCase):
     def test_increment_decrement(self):
         me = User()
         me.save()
@@ -22,10 +22,10 @@ class RelationshipsTestCase(TestCase):
         me = User.objects.get(pk=me.pk)
         you = User.objects.get(pk=you.pk)
 
-        self.assertEqual(me.following_count, 1) # i follow you
-        self.assertEqual(me.followers_count, 1) # you follow me
-        self.assertEqual(you.following_count, 1) # you follow me
-        self.assertEqual(you.followers_count, 1) # i follow you
+        self.assertEqual(me.following_count, 1)  # i follow you
+        self.assertEqual(me.followers_count, 1)  # you follow me
+        self.assertEqual(you.following_count, 1)  # you follow me
+        self.assertEqual(you.followers_count, 1)  # i follow you
 
         i_follow_you.delete()
 
@@ -33,12 +33,12 @@ class RelationshipsTestCase(TestCase):
         you = User.objects.get(pk=you.pk)
 
         self.assertEqual(me.following_count, 0)
-        self.assertEqual(me.followers_count, 1) # you follow me
-        self.assertEqual(you.following_count, 1) # you follow me
+        self.assertEqual(me.followers_count, 1)  # you follow me
+        self.assertEqual(you.following_count, 1)  # you follow me
         self.assertEqual(you.followers_count, 0)
 
 
-class CommentsTestCase(TestCase):
+class ArticlesTestCase(TransactionTestCase):
     def test_is_in_counter(self):
         user = User()
         user.save()
