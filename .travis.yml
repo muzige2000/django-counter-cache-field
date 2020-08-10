@@ -6,6 +6,7 @@ python:
   - "nightly"  # nightly build
 install:
   - pip install -e .[test]
+  - pip install coverage==4.5.3
   - pip install python-coveralls
 # command to run tests
 script:

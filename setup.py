@@ -34,7 +34,6 @@ setup(
     install_requires=[],
     extras_require={
         'test': [
-            'coverage',
             'django',
         ]
     },
