@@ -8,7 +8,7 @@ os.chdir(os.path.normpath(os.path.join(os.path.abspath(__file__), os.pardir)))
 
 setup(
     name='django-counter-cache-field',
-    version='0.1.0',
+    version=os.getenv('TRAVIS_TAG', '0.1.0'),
     packages=find_packages(exclude=['tests']),
     license='MIT License',
     description='django-counter-cache-field makes it extremely easy to denormalize and '
