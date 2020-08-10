@@ -6,9 +6,12 @@ python:
   - "nightly"  # nightly build
 install:
   - pip install -e .[test]
+  - pip install python-coveralls
 # command to run tests
 script:
-  - ./manage.py test
+  - coverage run manage.py test
+after_success:
+  - coveralls
 
 deploy:
   provider: pypi
