@@ -5,6 +5,10 @@ django-counter-field
     :target: https://travis-ci.org/enjoy2000/django-counter-cache-field
 
 
+.. image:: https://coveralls.io/repos/github/enjoy2000/django-counter-cache-field/badge.svg
+    :target: https://coveralls.io/github/enjoy2000/django-counter-cache-field
+
+
 It is sometimes useful to cache the total number of objects associated with another object through a ForeignKey
 relation. For example the total number of comments associated with an article.
 
