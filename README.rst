@@ -1,5 +1,5 @@
 ====================
-django-counter-field
+django-counter-cache-field
 ====================
 .. image:: https://travis-ci.org/enjoy2000/django-counter-cache-field.svg?branch=master
     :target: https://travis-ci.org/enjoy2000/django-counter-cache-field
@@ -12,16 +12,16 @@ django-counter-field
 It is sometimes useful to cache the total number of objects associated with another object through a ForeignKey
 relation. For example the total number of comments associated with an article.
 
-django-counter-field makes it easy to denormalize and keep such counters up to date.
+django-counter-cache-field makes it easy to denormalize and keep such counters up to date.
 
 Quick start
 -----------
 
-1. Install django-counter-field::
+1. Install django-counter-cache-field::
 
     pip install django-counter-cache-field
 
-2. Add "django_counter_field" to your INSTALLED_APPS setting::
+2. Add "django_counter_cache_field" to your INSTALLED_APPS setting::
 
     INSTALLED_APPS = (
         ...
@@ -61,14 +61,14 @@ argument to `connect_counter`:
     connect_counter('comment_count', Comment.article, lambda comment: comment.is_approved)
 
 The `is_in_counter_func` function will be called with `Comment` objects and must return `True` if the given comment
-should be counted. It must not concern itself with checking if the comment is deleted or not, django-counter-field
+should be counted. It must not concern itself with checking if the comment is deleted or not, django-counter-cache-field
 does that by default.
 
 Backfilling
 -----------
 
 Often you will add a `CounterCacheField` to a model that already has a large number of associated objects. When a counter
-is created, it's value is initialized to zero. This value is likely incorrect. django-counter-field provides a couple
+is created, it's value is initialized to zero. This value is likely incorrect. django-counter-cache-field provides a couple
 of management commands that allow you to rebuild the value of a counter:
 
 1. List all available counters:
