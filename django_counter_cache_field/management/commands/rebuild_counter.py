@@ -12,12 +12,14 @@ class Command(BaseCommand):
     Rebuild the specified counter. Use python manage.py list_counters
     for a list of available counters.
     """
+    def add_arguments(self, parser):
+        parser.add_argument('counter_name', nargs='+', type=str)
 
     def handle(self, *args, **options):
-        if len(args) != 1:
+        if not 'counter_name' in options.keys():
             sys.exit("Usage: python manage.py rebuild_counter <counter_name>")
 
-        counter_name = args[0]
+        counter_name = options['counter_name'][0]
         if not counter_name in counters:
             sys.exit("%s is not a registered counter" % counter_name)
 
